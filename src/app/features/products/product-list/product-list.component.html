@@ -1,1 +1,31 @@
-<p>product-list works!</p>
+<div class="product-list">
+    <h2 class="product-list__title">Product List</h2>
+    <table class="product-list__table">
+        <thead class="product-list__table-header">
+            <tr>
+                <th class="product-list__table-header-cell">ID</th>
+                <th class="product-list__table-header-cell">Name</th>
+                <th class="product-list__table-header-cell">Brand</th>
+                <th class="product-list__table-header-cell">Category</th>
+                <th class="product-list__table-header-cell">Price</th>
+                <th class="product-list__table-header-cell">Actions</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="(productsResponse$ | async)?.products as products" class="product-list__table-body">
+            <tr *ngFor="let product of products" class="product-list__table-row"
+                (click)="navigateToProduct(product._id)">
+                <td class="product-list__table-cell">{{ product._id }}</td>
+                <td class="product-list__table-cell">{{ product.name }}</td>
+                <td class="product-list__table-cell">{{ product.brand }}</td>
+                <td class="product-list__table-cell">{{ product.category }}</td>
+                <td class="product-list__table-cell">{{ product.price | currency }}</td>
+                <td class="product-list__table-cell">
+                    <button class="product-list__action-button"
+                        (click)="editProduct(product._id)">Edit</button>
+                    <button class="product-list__action-button"
+                        (click)="deleteProduct(product._id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

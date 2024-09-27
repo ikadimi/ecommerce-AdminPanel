@@ -67,7 +67,8 @@
               "buildTarget": "adminPannelFront:build:production"
             },
             "development": {
-              "buildTarget": "adminPannelFront:build:development"
+              "buildTarget": "adminPannelFront:build:development",
+              "port": 5000
             }
           },
           "defaultConfiguration": "development"
